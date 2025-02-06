@@ -96,12 +96,16 @@ while Menu:
     informar_carga_pokemons()
     print("1. Añadir un pokemon personalizado")
     print("2. Ver pokemons cargados")
-    print("3. Acceder al mapa")
-    print(f"4. Elegir pokemon de combate (Default: {pokemon_default.nombre})")
-    print("5. Salir")
+    print(f"3. Elegir pokemon de combate (Default: {pokemon_default.nombre})")
+    print("4. Acceder al mapa")
+    print("0. Salir")
     print("==============================")
     accion = input("Accion => ")
     match accion:
+        case '0':
+            print("Recibido")
+            Menu = False
+
         case '1':
             limpiar_pantalla()
             print("BIENVENIDO A CREAR TU POKEMON")
@@ -117,7 +121,7 @@ while Menu:
             mapa_juego.mostrarMapaDetallado()
             input("...")
 
-        case '4':
+        case '3':
             limpiar_pantalla()
             print(f"Elegido: {pokemon_default.nombre}")
             print("===============================")
@@ -128,8 +132,3 @@ while Menu:
                 pokemon_default = nuevo_pokemon
             
             input("...")
-
-
-        case '5':
-            print("Recibido")
-            Menu = False
