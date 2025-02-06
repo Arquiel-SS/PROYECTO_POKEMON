@@ -103,7 +103,9 @@ while Menu:
     accion = input("Accion => ")
     match accion:
         case '0':
-            print("Recibido")
+            limpiar_pantalla()
+            print("Cerrando juego...")
+            time.sleep(1)
             Menu = False
 
         case '1':
