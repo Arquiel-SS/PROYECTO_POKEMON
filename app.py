@@ -101,7 +101,7 @@ while menu_loop:
     limpiar_pantalla()
     informar_carga_pokemons()
     print("1. Añadir un pokemon personalizado")
-    print("2. Ver pokemons cargados")
+    print("2. Recargar distribución de mapa")
     print(f"3. Elegir pokemon de combate (Default: {pokemon_default.nombre})")
     print("4. Acceder al mapa")
     print("0. Salir")
@@ -119,13 +119,13 @@ while menu_loop:
             print("BIENVENIDO A CREAR TU POKEMON")
             print("====================================================================================")
             crear_pokemon()
-            mapa_juego = mapa.Mapa(5)
             input("...")
 
         case '2':
             limpiar_pantalla()
             print("POKEMONS CARGADOS EN EL MAPA")
             print("====================================================================================")
+            mapa_juego = mapa.Mapa(5)
             mapa_juego.mostrarMapaDetallado()
             input("...")
 
