@@ -13,12 +13,18 @@ class Mapa:
     def __init__(self, lado):
         self.lado = lado
         self.mapa = [
-            [f"({x},{y}): {almacen_Pokemons[random.randint(0, len(almacen_Pokemons) - 1)][0]}" for y in range(lado)] 
+            [f"({x},{y}):{almacen_Pokemons[random.randint(0, len(almacen_Pokemons) - 1)][0][0]}" for y in range(lado)] 
                 for x in range(lado)
-        ]
+        ]       
     
     def coordenada(self, x, y):
         print(self.mapa[x][y])
+
+    def coordenada_pokemon(self, x, y):
+        pokemon_enemigo = self.mapa[x][y]
+        output = pokemon_enemigo.split(":")
+
+        return output
     
     def mostrarMapa(self):
         for fila in self.mapa:

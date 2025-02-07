@@ -1,3 +1,5 @@
+import time
+
 class Personaje:
     def __init__(self, x, y):
         self.x = x
@@ -20,5 +22,11 @@ class Jugador(Personaje):
         super().__init__(x, y)
         self.nombre = nombre
 
-    def capturar_pokemon(self, pokemon):
-        print("a")
+    def capturar_pokemon(self, pokemon_jugador, pokemon_enemigo):
+        print(f"Lanzas una pokeball a {pokemon_enemigo.nombre}......")
+        time.sleep(2)
+        if pokemon_jugador.ataque > pokemon_enemigo.defensa:
+            print(f"Bien! Has atrapado a {pokemon_enemigo.nombre}")
+
+        else:
+            print(f"Has fallado en la captura de {pokemon_enemigo.nombre}!")
