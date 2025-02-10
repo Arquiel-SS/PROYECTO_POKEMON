@@ -22,11 +22,11 @@ class Jugador(Personaje):
         super().__init__(x, y)
         self.nombre = nombre
 
-    def capturar_pokemon(self, pokemon_jugador, pokemon_enemigo):
-        print(f"Lanzas una pokeball a {pokemon_enemigo.nombre}......")
-        time.sleep(2)
-        if pokemon_jugador.ataque > pokemon_enemigo.defensa:
-            print(f"Bien! Has atrapado a {pokemon_enemigo.nombre}")
+    def capturar_pokemon(self, ataque_j, defensa_p, nombre):
+        print(f"Se ha lanzado una pokeball a {nombre}...........")
+        time.sleep(1.5)
+        if ataque_j > defensa_p:
+            print(f"Has capturado a {nombre}!")
 
         else:
-            print(f"Has fallado en la captura de {pokemon_enemigo.nombre}!")
+            print(f"{nombre} se ha escapado!")

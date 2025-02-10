@@ -176,6 +176,10 @@ while menu_loop:
                     case 'e':
                         pokemon_enemigo_nombre = mapa_juego.coordenada_pokemon(jugador.x, jugador.y)[1]
 
-                        jugador.capturar_pokemon(pokemon_default, pokemon_enemigo_nombre)
+                        for p in almacen_Pokemons:
+                            if p.nombre == pokemon_enemigo_nombre:
+                                jugador.capturar_pokemon(pokemon_default.ataque, p.defensa, p.nombre)
+
+                                break               
 
                         input("Presiona Enter para continuar...")
