@@ -30,3 +30,37 @@ class Jugador(Personaje):
 
         else:
             print(f"{nombre} se ha escapado!")
+
+    def combate(self, pokemon_j, pokemon_enemigo):
+        print(f"¡El jugador {self.nombre} ha iniciado un enfrentamiento contra un {pokemon_enemigo.nombre} salvaje!")
+        time.sleep(1)
+        combate = True
+
+        while combate:
+            print("====================================================================================")
+            print(f"{pokemon_j.nombre} | Ataque: {pokemon_j.ataque} | Defensa: {pokemon_j.defensa} | PS: {pokemon_j.ps}")
+            print(f"{pokemon_enemigo.nombre} | Ataque: {pokemon_enemigo.ataque} | Defensa: {pokemon_enemigo.defensa} | PS: {pokemon_enemigo.ps}")
+            print("====================================================================================")
+            print("1. Atacar")
+            print("2. Usar ataque especial")
+            opcion = input("Elige una acción: ")
+        
+            match opcion:
+                case '1':
+                    pokemon_j.ataque_normal(pokemon_enemigo)
+                case '2':
+                    pokemon_j.ataque_especial(pokemon_enemigo)
+            
+            if pokemon_enemigo.ps <= 0:
+                print(f"¡{pokemon_enemigo.nombre} ha sido derrotado!")
+                input("Combate terminado.....")
+                combate = False
+                break
+
+            pokemon_enemigo.ataque_normal(pokemon_j)
+
+            if pokemon_j.ps <= 0:
+                print(f"¡{pokemon_j.nombre} ha sido derrotado!")
+                input("Combate terminado.....")
+                combate = False
+                break

@@ -1,3 +1,5 @@
+import time
+
 class Pokemon:
     def __init__(self, nombre, tipo, ataque, defensa, ps):
         self.nombre = nombre
@@ -23,6 +25,22 @@ class Pokemon:
     
     def set_ps(self, nuevo_ps):
         self.ps = nuevo_ps
+
+    def ataque_normal(self, enemigo):
+        print(f"¡{self.nombre} usa placaje!")
+        dmg = self.ataque - enemigo.defensa
+        time.sleep(1)
+
+        if dmg < 0:
+            print(f"¡El ataque ha sido demasiado débil!")
+            dmg = 0
+
+        else:
+            enemigo.ps -= dmg
+
+        print(f"{dmg} de daño")
+        print("====================================================================================")
+
 
     def mostrar_info(self):
         print("-------------------------")
@@ -52,26 +70,75 @@ class PokemonPlanta(Pokemon):
     def __init__(self, nombre, tipo, ataque, defensa, ps):
         super().__init__(nombre, tipo, ataque, defensa, ps)
 
-    def ataque_especial(self):
-        print("ATAQUE PLANTA")
+    def ataque_especial(self, enemigo):
+        print(f"¡{self.nombre} usa un ataque especial de tipo Planta!")
+        dmg = (self.ataque * 2) - enemigo.defensa
+        time.sleep(1)
+        if dmg < 0:
+            print(f"¡El ataque ha sido demasiado débil!")
+            dmg = 0
+        
+        else:
+            enemigo.ps -= dmg
+
+        print(f"{dmg} de daño")
+        print("====================================================================================")
+
+
 
 class PokemonAgua(Pokemon):
     def __init__(self, nombre, tipo, ataque, defensa, ps):
         super().__init__(nombre, tipo, ataque, defensa, ps)
 
-    def ataque_especial(self):
-        print("ATAQUE AGUA")
+    def ataque_especial(self, enemigo):
+        print(f"¡{self.nombre} usa un ataque especial de tipo Agua!")
+        dmg = (self.ataque * 2) - enemigo.defensa
+        time.sleep(1)
+        if dmg < 0:
+            print(f"¡El ataque ha sido demasiado débil!")
+            dmg = 0
+        
+        else:
+            enemigo.ps -= dmg
+
+        print(f"{dmg} de daño")
+        print("====================================================================================")
+
 
 class PokemonFuego(Pokemon):
     def __init__(self, nombre, tipo, ataque, defensa, ps):
         super().__init__(nombre, tipo, ataque, defensa, ps)
 
-    def ataque_especial(self):
-        print("ATAQUE FUEGO")
+    def ataque_especial(self, enemigo):
+        print(f"¡{self.nombre} usa un ataque especial de tipo Fuego!")
+        dmg = (self.ataque * 2) - enemigo.defensa
+        time.sleep(1)
+        if dmg < 0:
+            print(f"¡El ataque ha sido demasiado débil!")
+            dmg = 0
+
+        else:
+            enemigo.ps -= dmg
+
+        print(f"{dmg} de daño")
+        print("====================================================================================")
+
+        
 
 class PokemonVolador(Pokemon):
     def __init__(self, nombre, tipo, ataque, defensa, ps):
         super().__init__(nombre, tipo, ataque, defensa, ps)
 
-    def ataque_especial(self):
-        print("ATAQUE VOLADOR")
+    def ataque_especial(self, enemigo):
+        print(f"¡{self.nombre} usa un ataque especial de tipo Volador!")
+        dmg = (self.ataque * 2) - enemigo.defensa
+        time.sleep(1)
+        if dmg < 0:
+            print(f"¡El ataque ha sido demasiado débil!")
+            dmg = 0
+        
+        else:
+            enemigo.ps -= dmg
+
+        print(f"{dmg} de daño")
+        print("====================================================================================")

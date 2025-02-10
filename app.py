@@ -1,12 +1,11 @@
 import os, random, time
 from clases_subclases import pokemon, mapa, personaje
 
-# Importación de Pokemons
 almacen_Pokemons = []
 
 with open("listado_pokemons.txt") as archivo:
     for linea in archivo:
-        datos = linea.strip().split(",")  # Eliminamos espacios y dividimos por comas
+        datos = linea.strip().split(",")
         nombre, tipo, ataque, defensa = datos[0], datos[1], int(datos[2]), int(datos[3])
 
         match tipo:
@@ -21,7 +20,6 @@ with open("listado_pokemons.txt") as archivo:
 
         almacen_Pokemons.append(pokemon_instancia)
 
-# Funciones de utilidad / Generales
 def limpiar_pantalla():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -147,7 +145,7 @@ while menu_loop:
                 limpiar_pantalla()
                 print("EXPLORACIÓN DE MAPA")
                 print("====================================================================================")
-                print("Arriba: w | Izquierda: a | Derecha: d | Abajo: s | Capturar: e | Atrás: 0")
+                print("Arriba: w | Izquierda: a | Derecha: d | Abajo: s | Capturar: e | Combatir: f | Atrás: 0")
                 print("====================================================================================")
                 pokemon_enemigo = mapa_juego.coordenada_pokemon(jugador.x, jugador.y)
                 mapa_juego.mostrarMapaDetallado()
@@ -163,15 +161,27 @@ while menu_loop:
 
                     case 'w':
                         jugador.moverArriba()
+                        if jugador.y > 4:
+                            input("Límite del mapa alcanzado!")
+                            jugador.y -= 1
                     
                     case 'a':
                         jugador.moverIzquierda()
+                        if jugador.x < 0:
+                            input("Límite del mapa alcanzado!")
+                            jugador.x += 1
 
                     case 'd':
                         jugador.moverDerecha()
+                        if jugador.x > 4:
+                            input("Límite del mapa alcanzado!")
+                            jugador.x -= 1
 
                     case 's':
                         jugador.moverAbajo()
+                        if jugador.y < 0:
+                            input("Límite del mapa alcanzado!")
+                            jugador.y += 1
 
                     case 'e':
                         pokemon_enemigo_nombre = mapa_juego.coordenada_pokemon(jugador.x, jugador.y)[1]
@@ -183,3 +193,13 @@ while menu_loop:
                                 break               
 
                         input("Presiona Enter para continuar...")
+
+                    case 'f':
+                        pokemon_enemigo_nombre = mapa_juego.coordenada_pokemon(jugador.x, jugador.y)[1]
+
+                        for p in almacen_Pokemons:
+                            if p.nombre == pokemon_enemigo_nombre:
+                                limpiar_pantalla()
+                                jugador.combate(pokemon_default, p)
+
+                                break
