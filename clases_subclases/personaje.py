@@ -1,4 +1,7 @@
-import time
+import time, os
+
+def limpiar_pantalla():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 class Personaje:
     def __init__(self, x, y):
@@ -33,10 +36,11 @@ class Jugador(Personaje):
 
     def combate(self, pokemon_j, pokemon_enemigo):
         print(f"¡El jugador {self.nombre} ha iniciado un enfrentamiento contra un {pokemon_enemigo.nombre} salvaje!")
-        time.sleep(1)
+        time.sleep(2.5)
         combate = True
 
         while combate:
+            limpiar_pantalla()
             print("====================================================================================")
             print(f"{pokemon_j.nombre} | Ataque: {pokemon_j.ataque} | Defensa: {pokemon_j.defensa} | PS: {pokemon_j.ps}")
             print(f"{pokemon_enemigo.nombre} | Ataque: {pokemon_enemigo.ataque} | Defensa: {pokemon_enemigo.defensa} | PS: {pokemon_enemigo.ps}")
@@ -64,3 +68,5 @@ class Jugador(Personaje):
                 input("Combate terminado.....")
                 combate = False
                 break
+
+            input("Turno terminado...")
