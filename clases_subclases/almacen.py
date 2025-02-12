@@ -1,2 +1,1 @@
-class almacen:
-    almacen_Pokemons = []
+almacen_Pokemons = []

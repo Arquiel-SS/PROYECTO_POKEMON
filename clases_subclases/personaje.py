@@ -1,4 +1,4 @@
-import time, os
+import time, os, random
 
 def limpiar_pantalla():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -47,14 +47,26 @@ class Jugador(Personaje):
             print("====================================================================================")
             print("1. Atacar")
             print("2. Usar ataque especial")
+            print(f"3. Huir (50% probabilidad)")
             opcion = input("Elige una acción: ")
         
             match opcion:
                 case '1':
                     pokemon_j.ataque_normal(pokemon_enemigo)
+
                 case '2':
                     pokemon_j.ataque_especial(pokemon_enemigo)
-            
+
+                case '3':
+                    chance = random.randint(1, 2)
+                    if chance == 1:
+                        print(f"¡Has huido con éxito!")
+                        combate = False
+                        break
+
+                    else:
+                        print(f"Has intentado huir... pero no has podido")
+
             if pokemon_enemigo.ps <= 0:
                 print(f"¡{pokemon_enemigo.nombre} ha sido derrotado!")
                 input("Combate terminado.....")
