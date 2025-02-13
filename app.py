@@ -66,7 +66,6 @@ def crear_pokemon():
             return
 
     almacen_Pokemons.append(pokemon_instancia)
-    return ps
 
 # Simulación de carga
 limpiar_pantalla()
@@ -117,7 +116,7 @@ while menu_loop:
             limpiar_pantalla()
             print("BIENVENIDO A CREAR TU POKEMON")
             print("====================================================================================")
-            vida_creacion = crear_pokemon()
+            crear_pokemon()
             input("...")
 
         case '2':
@@ -206,8 +205,6 @@ while menu_loop:
                                 p.ps = 100
 
                                 break
-
-                        pokemon_default.ps = vida_creacion
 
                     case _:
                         print("Acción no válida.")
