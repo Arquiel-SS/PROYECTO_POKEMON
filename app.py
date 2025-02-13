@@ -208,4 +208,11 @@ while menu_loop:
                                 break
 
                         pokemon_default.ps = vida_creacion
-                        
+
+                    case _:
+                        print("Acción no válida.")
+                        input("...")
+
+        case _:
+            print("Acción no válida.")
+            input("...")
